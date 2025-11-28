@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
+import ru.yandex.practicum.filmorate.exception.NotFoundException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,6 +43,16 @@ public class ErrorHandler {
         Map<String, String> errorResponse = new HashMap<>();
         errorResponse.put("error", "Внутренняя ошибка сервера");
         errorResponse.put("message", "Произошла непредвиденная ошибка");
+        return errorResponse;
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Map<String, String> handleNotFoundException(final NotFoundException e) {
+        log.error("Объект не найден: {}", e.getMessage());
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("error", "Ошибка валидации");
+        errorResponse.put("message", e.getMessage());
         return errorResponse;
     }
 }

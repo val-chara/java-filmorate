@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
+import ru.yandex.practicum.filmorate.exception.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,7 +45,7 @@ public class UserController {
     public User updateUser(@Valid @RequestBody User user) {
         if (user.getId() == 0 || !users.containsKey(user.getId())) {
             log.error("Попытка обновления несуществующего пользователя с id: {}", user.getId());
-            throw new ValidationException("Пользователь с id " + user.getId() + " не найден");
+            throw new NotFoundException("Пользователь с id " + user.getId() + " не найден");
         }
         validateUser(user);
 
