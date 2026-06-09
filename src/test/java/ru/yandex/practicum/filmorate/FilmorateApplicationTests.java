@@ -10,4 +10,16 @@ class FilmorateApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void mainMethodStartsApplication() {
+		FilmorateApplication.main(new String[]{});
+	}
+
+	@Test
+	void filmValidationTest() {
+	}
+
+	@Test
+	void userValidationTest() {
+	}
 }
