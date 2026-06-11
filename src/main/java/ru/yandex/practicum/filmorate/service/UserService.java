@@ -7,11 +7,8 @@ import ru.yandex.practicum.filmorate.exception.NotFoundException;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.storage.user.UserStorage;
-import org.springframework.beans.factory.annotation.Qualifier;
 import ru.yandex.practicum.filmorate.storage.user.UserDbStorage;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Service
