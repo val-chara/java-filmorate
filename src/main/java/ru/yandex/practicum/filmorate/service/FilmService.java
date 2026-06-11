@@ -86,6 +86,7 @@ public class FilmService {
             throw new ValidationException("Дата релиза не может быть раньше " + MIN_RELEASE_DATE);
         }
     }
+
     private void validateMpaAndGenres(Film film) {
         if (film.getMpa() != null) {
             mpaStorage.getById(film.getMpa().getId())
